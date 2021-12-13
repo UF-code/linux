@@ -18,17 +18,25 @@ read -p "Password: " PASSWORD
 
 
 # Create the user
-useradd -c ${COMMENT} -m ${USERNAME}
+useradd -c "${COMMENT}" -m ${USERNAME}
 
 # Set the password for the user
-echo ${PASSWORD} | passwd --stdin ${USERNAME}
+echo "$USERNAME:$PASSWORD" | chpasswd
 
-# Force password change of first login
+# Force password change on first login
 passwd -e ${USERNAME}
 
 
 # user list
 # cat /etc/passwd
 
-#user delete
+# switch user
+# su - USERNAME
+
+# user delete
 # man userdel
+
+# man ps
+# man passwd
+
+# man chpasswd
